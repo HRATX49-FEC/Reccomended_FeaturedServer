@@ -1,0 +1,40 @@
+{
+  "name": "casper-mainitemdisplayservice",
+  "version": "1.0.0",
+  "description": "Main Item Display service for front end capstone project",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev-server": "nodemon server/server.js",
+    "dev-compile": "webpack -d -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRATX49-FEC/Casper-MainItemDisplayService.git"
+  },
+  "author": "Anthony Casper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HRATX49-FEC/Casper-MainItemDisplayService/issues"
+  },
+  "homepage": "https://github.com/HRATX49-FEC/Casper-MainItemDisplayService#readme",
+  "dependencies": {
+    "axios": "^0.19.2",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/preset-env": "^7.10.2",
+    "@babel/preset-react": "^7.10.1",
+    "babel": "^6.23.0",
+    "babel-loader": "^8.1.0",
+    "cli": "^1.0.1",
+    "jest": "^26.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
