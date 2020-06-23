@@ -45,6 +45,8 @@
   cursor: pointer;
   position: relative;
   background-color: transparent;
+  text-decoration: none;
+  color: rgb(102, 102, 102);
 }
 
 .headerItem:focus {
@@ -54,13 +56,9 @@
   outline-offset: 3px;
 }
 
-.headerItem:visited {
-  color: rgb(102, 102, 102);
-}
-
 .headerItem:hover {
   color: rgb(51, 51, 51);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 .headerItemSelected {
@@ -82,10 +80,6 @@
 .headerItemSelected:hover {
   color: rgb(51, 51, 51);
   text-decoration: underline;
-}
-
-.itemBox {
-
 }
 
 .itemRow {

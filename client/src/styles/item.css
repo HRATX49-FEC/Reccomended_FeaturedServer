@@ -23,7 +23,7 @@
 
 .productWrapper {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: middle;
   margin-left: 4px;
   margin-top: 4px;
   padding-bottom: 12px;
@@ -42,10 +42,12 @@
 .imageWrapper {
   height: 185px;
   overflow: hidden;
+  line-height: 185px;
 }
 
 .productImage {
-  display: block;
+  display: inline-block;
+  vertical-align: middle;
   max-width: 100%;
   height: auto;
 }
