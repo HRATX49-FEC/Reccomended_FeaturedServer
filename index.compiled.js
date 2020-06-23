@@ -1,35 +1,37 @@
-const express = require('express');
+"use strict";
 
-const path = require('path');
+var express = require('express');
 
-const db = require('./db/querys.js');
+var path = require('path');
 
-const PORT = 5001;
-const app = express();
+var db = require('./db/querys.js');
+
+var PORT = process.env.PORT || 5001;
+var app = express();
 app.use(express.json());
 app.use(express.urlencoded({
   extended: true
 }));
-app.use(express.static(path.join(__dirname, 'client', 'dist')));
-app.get('/reccomended', (req, res) => {
-  db.getCat(req.query.catName).then(results => {
+app.use(express["static"](path.join(__dirname, 'client', 'dist')));
+app.get('/reccomended', function (req, res) {
+  db.getCat(req.query.catName).then(function (results) {
     //restructure the results to send back to the client
-    let cat = results[0];
+    var cat = results[0];
     cat.url = [cat.url];
 
-    for (let i = 1; i < results.length; i++) {
+    for (var i = 1; i < results.length; i++) {
       cat.url.push(results[i].url);
     } //send the restrucured results to the client
 
 
     res.status(200).send(cat);
-  }).catch(err => {
+  })["catch"](function (err) {
     console.log(err);
     res.sendStatus(404);
   });
 });
-app.get('/reccomended/all', (req, res) => {
-  db.getCats().then(results => {
+app.get('/reccomended/all', function (req, res) {
+  db.getCats().then(function (results) {
     //restructure the results to send back to the client
     // let cat = results[0];
     // cat.url = [cat.url]
@@ -38,11 +40,11 @@ app.get('/reccomended/all', (req, res) => {
     // }
     //send the restrucured results to the client
     res.status(200).send(results);
-  }).catch(err => {
+  })["catch"](function (err) {
     console.log(err);
     res.sendStatus(404);
   });
 });
-app.listen(PORT, () => {
-  console.log(`Express is listening on port ${PORT}.`);
+app.listen(PORT, function () {
+  console.log("Express is listening on port ".concat(PORT, "."));
 });
