@@ -27,5 +27,18 @@ connection.getCat = (catName) => {
   });
 }
 
+connection.getCats = () => {
+  return new Promise ((resolve, reject) => {
+    connection.query(`SELECT * FROM cats INNER JOIN images ON (cats.id=images.cat_id) INNER JOIN categories ON (categories.id = cats.category_id)`,
+    (err, results) => {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(results);
+      }
+    })
+  })
+}
+
 
 module.exports = connection;
