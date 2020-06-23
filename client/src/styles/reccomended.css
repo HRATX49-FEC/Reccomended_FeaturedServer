@@ -1,0 +1,104 @@
+.all {
+  font-family: Targetica, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-size-adjust: 100%;
+  color: rgb(51, 51, 51);
+  font-size: 16px;
+  background-color: white;
+  max-width: 100%;
+  overflow-x: hidden;
+  margin: 0px;
+}
+
+.container {
+  composes: all;
+  display: block;
+  margin-left: 16px;
+  line-height: 1.4285;
+  color: rgb(51, 51, 51);
+  text-align: center;
+}
+
+.subHeader {
+  position: relative;
+  white-space: nowrap;
+  overflow: auto hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+  margin: 0 auto;
+  border-bottom: 1px solid rgb(136, 136, 136);
+}
+
+.headerList {
+  box-sizing: border-box;
+  padding: 4px 1px 0px;
+  margin: 0 auto;
+  display: table;
+  vertical-align: baseline;
+  list-style: outside none none;
+
+}
+
+.headerItem {
+  vertical-align: baseline;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  background-color: transparent;
+  text-decoration: none;
+  color: rgb(102, 102, 102);
+}
+
+.headerItem:focus {
+  color: rgb(51, 51, 51);
+  outline: 1px dashed rgb(51, 51, 51);
+  text-decoration: none;
+  outline-offset: 3px;
+}
+
+.headerItem:hover {
+  color: rgb(51, 51, 51);
+  text-decoration: underline;
+}
+
+.headerItemSelected {
+  composes: headerItem;
+  font-size: 16px;
+  text-align: center;
+  white-space: nowrap;
+  border-bottom: 3px solid rgb(204, 0, 0);
+  margin: 0;
+  padding: 8px 12px;
+}
+
+.headerItemSelected:focus {
+  outline-offset: 0px;
+  outline: 1px dashed rgb(136, 136, 136);
+}
+
+.headerItemSelected:focus,
+.headerItemSelected:hover {
+  color: rgb(51, 51, 51);
+  text-decoration: underline;
+}
+
+.itemRow {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: outside none none;
+  margin: 0;
+  text-align: center;
+}
+
+@media (min-width: 668px) {
+  .headerList {
+    border-spacing: 40px 0px;
+  }
+}
+
+@media (min-width: 992px) {
+  .headerList {
+    border-spacing: 40px 0px;
+  }
+}
