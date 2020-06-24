@@ -30,7 +30,7 @@ export default function Reccomended({cats, currentCat, similar, currentTab, hand
         <ul className={styles.itemRow}>
           {
           current.map((cat, index) => {
-            return <Item onClick={handleNewCat} key={index} cat={cat}/>
+            return <Item handleNewCat={handleNewCat} key={index} cat={cat}/>
           })}
         </ul>
       </div>

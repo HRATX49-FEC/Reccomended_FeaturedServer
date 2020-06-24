@@ -70,12 +70,12 @@ class RecFea extends React.Component {
     let alreadyPushed = {};
     while (slicedCats.length < 6) {
       let randomIndex = Math.floor(Math.random() * Math.floor(elgibleCats.length));
-      if(alreadyPushed[randomIndex]) {
+      if(alreadyPushed[elgibleCats[randomIndex].catName]) {
         continue;
       }
 
       slicedCats.push(elgibleCats[randomIndex]);
-      alreadyPushed[randomIndex] = true;
+      alreadyPushed[elgibleCats[randomIndex].catName] = true;
     }
 
     return slicedCats;
@@ -88,7 +88,7 @@ class RecFea extends React.Component {
   }
 
   handleNewCat(e, catName) {
-    getCat(catName);
+    this.getCat(catName);
   }
 
   render() {
