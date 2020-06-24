@@ -9,7 +9,6 @@ import styles from './styles/index.css';
 class RecFea extends React.Component {
   constructor(props) {
     super(props);
-    this.catName = props.cat || 'Luna';
     this.state = {
       cat: {},
       cats: [],
@@ -19,10 +18,11 @@ class RecFea extends React.Component {
 
     this.makeRandomCatsProp = this.makeRandomCatsProp.bind(this);
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.handleNewCat = this.handleNewCat.bind(this);
   }
 
   componentDidMount() {
-    this.getCat(this.catName);
+    this.getCat('Luna');
     this.getCats();
   }
 
@@ -87,21 +87,27 @@ class RecFea extends React.Component {
     });
   }
 
+  handleNewCat(e, catName) {
+    getCat(catName);
+  }
+
   render() {
     return (
       <div>
         <h1 className={styles.heading}>Recommended</h1>
         <Reccomended
+        currentCat={this.state.cat}
         cats={this.makeRandomCatsProp(this.state.cats)}
         similar={this.makeRandomCatsProp(this.state.cats.filter(cat => {
           return cat.category_id === this.state.cat.category_id;
         }))}
         currentTab={this.state.reccomendedTab}
         handleTabChange={this.handleTabChange}
+        handleNewCat={this.handleNewCat}
         />
         <hr className={styles.hr} />
         <h1 className={styles.heading}>Featured Products</h1>
-        <Featured cats={this.state.featured}/>
+        <Featured cats={this.state.featured} currentCat={this.state.cat} handleNewCat={this.handleNewCat}/>
         <hr className={styles.hr} />
       </div>
     )

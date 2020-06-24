@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from '../styles/item.css';
 
-export default function Item({cat}) {
+export default function Item({cat, handleNewCat}) {
   return (
-    <li className={styles.reccomendedItem}>
+    <li className={styles.reccomendedItem} onClick={(e) => {
+      handleNewCat(e, cat.catName)
+    }}>
       <div className={styles.productWrapper}>
         <a className={styles.product} href='#'>
           <div className={styles.imageWrapper}>
