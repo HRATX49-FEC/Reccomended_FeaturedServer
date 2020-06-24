@@ -89,7 +89,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1 className={styles.heading}>Reccomended</h1>
+        <h1 className={styles.heading}>Recommended</h1>
         <Reccomended
         cats={this.makeRandomCatsProp(this.state.cats)}
         similar={this.makeRandomCatsProp(this.state.cats.filter(cat => {
