@@ -9,6 +9,7 @@ import styles from './styles/index.css';
 class RecFea extends React.Component {
   constructor(props) {
     super(props);
+    this.catName = props.cat || 'Luna';
     this.state = {
       cat: {},
       cats: [],
@@ -21,7 +22,7 @@ class RecFea extends React.Component {
   }
 
   componentDidMount() {
-    this.getCat(props.cat);
+    this.getCat(this.catName);
     this.getCats();
   }
 
@@ -107,4 +108,4 @@ class RecFea extends React.Component {
   }
 }
 
-ReactDOM.render(<RecFea cat={window.catName || 'Luna'}/>, document.getElementById('recommended'));
+ReactDOM.render(<RecFea cat={window.catName}/>, document.getElementById('recommended'));
