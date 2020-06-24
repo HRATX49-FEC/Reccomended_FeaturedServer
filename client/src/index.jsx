@@ -6,7 +6,7 @@ import Reccomended from './components/reccomended.jsx';
 import Featured from './components/featured.jsx';
 import styles from './styles/index.css';
 
-class App extends React.Component {
+class Recommended extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getCat('Xito');
+    this.getCat(props.cat);
     this.getCats();
   }
 
@@ -107,4 +107,4 @@ class App extends React.Component {
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('recommended'));
+ReactDOM.render(<Recommended cat={window.catName || 'Luna'}/>, document.getElementById('recommended'));
