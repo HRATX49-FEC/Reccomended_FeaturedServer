@@ -25,8 +25,11 @@ class RecFea extends React.Component {
   componentDidMount() {
     this.getCat('Luna');
     this.getCats();
-    $('body').on('click', '.catLink', (e) => {
-      console.log(e);
+    $('body').on('submit', '.form', (e) => {
+      let formatted = e.target[0].rawValue.replace(/(^\w|\s\w)(\S*)/g, (_,m1,m2) => m1.toUpperCase()+m2.toLowerCase());
+      console.log(formatted);
+      this.getCat(formatted);
+      this.getCats();
     });
   }
 
