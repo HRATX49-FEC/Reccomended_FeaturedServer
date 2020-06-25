@@ -3,7 +3,7 @@ import styles from '../styles/item.css';
 
 export default function Item({cat, handleNewCat}) {
   return (
-    <li className={styles.reccomendedItem} onClick={(e) => {
+    <li className={`${styles.reccomendedItem} catLink`} onClick={(e) => {
       handleNewCat(e, cat.catName)
     }}>
       <div className={styles.productWrapper}>

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
+import $ from 'jquery';
 
 import Reccomended from './components/reccomended.jsx';
 import Featured from './components/featured.jsx';
@@ -24,6 +25,9 @@ class RecFea extends React.Component {
   componentDidMount() {
     this.getCat('Luna');
     this.getCats();
+    $('body').on('click', '.catLink', (e) => {
+      console.log(e);
+    });
   }
 
   getCat(catName) {
@@ -107,7 +111,7 @@ class RecFea extends React.Component {
         />
         <hr className={styles.hr} />
         <h1 className={styles.heading}>Featured Products</h1>
-        <Featured cats={this.state.featured} currentCat={this.state.cat} handleNewCat={this.handleNewCat}/>
+        <Featured currentCat={this.state.cat} cats={this.state.featured} handleNewCat={this.handleNewCat}/>
         <hr className={styles.hr} />
       </div>
     )
