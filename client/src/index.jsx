@@ -95,6 +95,7 @@ class RecFea extends React.Component {
   }
 
   handleNewCat(e, catName) {
+    e.preventDefault();
     this.getCat(catName);
   }
 
