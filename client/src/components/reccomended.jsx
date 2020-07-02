@@ -2,7 +2,7 @@ import React from 'react';
 import styles from '../styles/reccomended.css';
 import Item from './item.jsx'
 
-export default function Reccomended({cats, similar, currentTab, handleTabChange}) {
+export default function Reccomended({cats, currentCat, similar, currentTab, handleTabChange, handleNewCat}) {
 
   let current = currentTab === 'more' ? cats : similar;
 
@@ -30,7 +30,7 @@ export default function Reccomended({cats, similar, currentTab, handleTabChange}
         <ul className={styles.itemRow}>
           {
           current.map((cat, index) => {
-            return <Item key={index} cat={cat}/>
+            return <Item handleNewCat={handleNewCat} key={index} cat={cat}/>
           })}
         </ul>
       </div>

@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Axios from 'axios';
+import $ from 'jquery';
 
 import Reccomended from './components/reccomended.jsx';
 import Featured from './components/featured.jsx';
 import styles from './styles/index.css';
 
-class App extends React.Component {
+class RecFea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -18,11 +19,18 @@ class App extends React.Component {
 
     this.makeRandomCatsProp = this.makeRandomCatsProp.bind(this);
     this.handleTabChange = this.handleTabChange.bind(this);
+    this.handleNewCat = this.handleNewCat.bind(this);
   }
 
   componentDidMount() {
-    this.getCat('Xito');
+    this.getCat('Luna');
     this.getCats();
+    $('body').on('submit', '.form', (e) => {
+      let formatted = e.target[0].value.replace(/(^\w|\s\w)(\S*)/g, (_,m1,m2) => m1.toUpperCase()+m2.toLowerCase());
+      console.log(formatted);
+      this.getCat(formatted);
+      this.getCats();
+    });
   }
 
   getCat(catName) {
@@ -69,12 +77,12 @@ class App extends React.Component {
     let alreadyPushed = {};
     while (slicedCats.length < 6) {
       let randomIndex = Math.floor(Math.random() * Math.floor(elgibleCats.length));
-      if(alreadyPushed[randomIndex]) {
+      if(alreadyPushed[elgibleCats[randomIndex].catName]) {
         continue;
       }
 
       slicedCats.push(elgibleCats[randomIndex]);
-      alreadyPushed[randomIndex] = true;
+      alreadyPushed[elgibleCats[randomIndex].catName] = true;
     }
 
     return slicedCats;
@@ -86,25 +94,31 @@ class App extends React.Component {
     });
   }
 
+  handleNewCat(e, catName) {
+    this.getCat(catName);
+  }
+
   render() {
     return (
       <div>
-        <h1 className={styles.heading}>Reccomended</h1>
+        <h1 className={styles.heading}>Recommended</h1>
         <Reccomended
+        currentCat={this.state.cat}
         cats={this.makeRandomCatsProp(this.state.cats)}
         similar={this.makeRandomCatsProp(this.state.cats.filter(cat => {
           return cat.category_id === this.state.cat.category_id;
         }))}
         currentTab={this.state.reccomendedTab}
         handleTabChange={this.handleTabChange}
+        handleNewCat={this.handleNewCat}
         />
         <hr className={styles.hr} />
         <h1 className={styles.heading}>Featured Products</h1>
-        <Featured cats={this.state.featured}/>
+        <Featured currentCat={this.state.cat} cats={this.state.featured} handleNewCat={this.handleNewCat}/>
         <hr className={styles.hr} />
       </div>
     )
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<RecFea cat={window.catName}/>, document.getElementById('recommended'));
