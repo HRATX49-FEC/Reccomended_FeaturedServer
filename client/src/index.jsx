@@ -125,4 +125,4 @@ class RecFea extends React.Component {
   }
 }
 
-ReactDOM.render(<RecFea cat={window.catName}/>, document.getElementById('recommended'));
+ReactDOM.render(<RecFea />, document.getElementById('recommended'));
