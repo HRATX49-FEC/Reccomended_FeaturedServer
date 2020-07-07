@@ -31,6 +31,9 @@ class RecFea extends React.Component {
       this.getCat(formatted);
       this.getCats();
     });
+    $('body').on('click', '.catRows', (e) => {
+      this.getCat(e.currentTarget.value);
+    });
   }
 
   getCat(catName) {
@@ -89,6 +92,7 @@ class RecFea extends React.Component {
   }
 
   handleTabChange(e) {
+    e.preventDefault();
     this.setState({
       reccomendedTab: e.target.name
     });
@@ -121,4 +125,4 @@ class RecFea extends React.Component {
   }
 }
 
-ReactDOM.render(<RecFea cat={window.catName}/>, document.getElementById('recommended'));
+ReactDOM.render(<RecFea />, document.getElementById('recommended'));
