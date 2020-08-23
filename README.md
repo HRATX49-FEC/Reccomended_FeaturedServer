@@ -7,7 +7,7 @@ This service is part of a larger project that implements a site with similar app
 Use npm to install required packages and compile necessary files
 
 ```zsh
-npm setup
+npm run setup
 ```
 
 This service is configured to run locally on port 5001 when not deployed on AWS.
